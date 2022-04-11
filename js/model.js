@@ -14,10 +14,7 @@ export default class Model {
             this.currentId = 1;
         } else {
             this.currentId = this.todos[this.todos.length - 1].id + 1;
-
         }
-
-
     }
     setView(view) {
         this.view = view;
@@ -40,6 +37,13 @@ export default class Model {
         console.log(this.todos);
         this.save();
     }
+    editTodo(id, values) {
+        const index = this.findTodo(id);
+        Object.assign(this.todos[index], values);
+        this.save();
+
+    }
+
     addTodo(title, description) {
         const todo = {
             id: this.currentId++,
@@ -55,7 +59,7 @@ export default class Model {
     }
     removeTodo(id) {
         const index = this.findTodo(id);
-        this.todos.slice(index, 1);
+        this.todos.splice(index, 1);
         this.save();
     }
 }
