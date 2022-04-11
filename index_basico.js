@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const description = document.getElementById('description');
     const table = document.getElementById('table');
     const alert = document.getElementById('alert');
+    let id = 1;
 
 
     function removeTodo(index) {
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         alert.classList.add('d-none');
         const row = table.insertRow();
+        row.setAttribute('id',id++);
         row.innerHTML = `
         <td>${title.value}</td>
         <td>${description.value}</td>
@@ -35,21 +37,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const removeBtn= document.createElement('button');
         removeBtn.classList.add('btn','btn-danger','mb-1');
         removeBtn.innerHTML='<i class="fa fa-trash"></i>';
+        removeBtn.onclick = function (e) { 
+            removeTodo(row.setAttribute('id'));
+            
+            //const index = $(this).closest('tr').index() + 1;
+            //removeTodo(index);
+
+           // $(this).closest('tr').remove();
+            //console.log($(this).closest('tr').index());
+           // removeTodo();
+        }
         row.children[3].appendChild(removeBtn)
 
 
 
 
-        removeBtn.onclick = function (e) {          
 
-            const index = $(this).closest('tr').index() + 1;
-            removeTodo(index);
-           // $(this).closest('tr').remove();
-            //console.log($(this).closest('tr').index());
-           // removeTodo();
- 
-
-        }
 
 
     };
