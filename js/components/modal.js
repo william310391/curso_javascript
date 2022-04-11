@@ -23,6 +23,7 @@ export default class Modal {
                 return;
             }
             $('#modal').modal('toggle');
+            this.alert.hide();
             callback(this.todo.id, {
                 title: this.title.value,
                 description: this.description.value,
