@@ -25,7 +25,8 @@ export default class Model {
     }
 
     getTodos(todos) {
-        return this.todos;
+       // return this.todos;
+       return this.todos.map((todo)=> ({...todo}));
     }
     findTodo(id) {
         return this.todos.findIndex((todo) => todo.id === id);
